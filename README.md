@@ -6,6 +6,9 @@ Welcome to the draft version of this Linux Essentials Course for VIVES Universit
 
 Comments and additions are more than welcome.
 
+## Deployment
+[!course deployment](https://linux-essentails-joey.netlify.app)
+
 ## Development
 
 The static site is generated from markdown using VuePress.

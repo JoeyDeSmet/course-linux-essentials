@@ -187,41 +187,80 @@ Find all the info you need in the man-pages. Make sure to comment the commands y
 
 Mark challenges using a ✅ once they are finished.
 
-### ❌ The free command
+### ✅ The free command
 
 *Describe in your own words what the `free` command does. Give an example and a partial output.*
 
-### ❌ The id command
+Shows you the curren free amount of memory.
+
+```text
+              total        used        free      shared  buff/cache   available
+Mem:       32717324     3423524    24846296       81284     4447504    28744976
+Swap:       2097148           0     2097148
+```
+
+### ✅ The id command
 
 *Describe in your own words what the `id` command does. Give an example and a partial output.*
 
-### ❌ The tree command
+Shows you current user information.
 
-*Describe in your own words what the `tree` command does. How do you list all subdirectories too? How can you only include directories? If the `tree` command is not available on your system you can install it using `sudo apt install tree`*
+```text
+uid=1000(joey) gid=1000(joey)
+```
 
-### ❌ The which command
+### ✅ The tree command
+
+*Describe in your own words what the `tree` command does. How do you list all subdirectories too? How can you only include directories? If the `tree` command is not available on your system you can install it using `sudo apt install tree`*.
+
+Shows you the hierarchy of the filesytem.
+
+### ✅ The which command
 
 *Describe in your own words what the `which` command does. What is the result for `pwd` ?*
 
-### ❌ The file command
+Shows u the path to a given command. For pwd -> shell built-in command
+
+### ✅ The file command
 
 *Describe in your own words what the `file` command does. What is the result for `~/.bashrc` ?*
 
-### ❌ The type command
+Gives a description of the contenst of a file. Output for ~/.bashrc -> ASCII text
+
+### ✅ The type command
 
 *Describe in your own words what the `type` command does. What is the result for `ls` and what is the result for `g++` ?*
 
-### ❌ Counting lines and words
+Description for that command.
+```bash
+type ls
+"ls is an alias for ls --color=tty"
+type g++
+"g++ is /usr/bin/g++"
+```
+
+### ✅ Counting lines and words
 
 *What command can be used to count lines and words in text? Give an example and explain the output.*
 
-### ❌ The wget command
+```bash
+wc README.md
+"44  137 1482 README.md"
+```
+
+### ✅ The wget command
 
 *How can you download a file from the Internet using the command line?. Find a file online to use it on and demonstrate its usage.*
 
-### ❌ The dmesg command
+```bash
+wget https://downloads.raspberrypi.org/raspios_lite_armhf/images/raspios_lite_armhf-2021-05-28/2021-05-07-raspios-buster-armhf-lite.zip
+```
+
+### ✅ The dmesg command
 
 *Describe in your own words what the `dmesg` command does. Give an example and a partial output.*
+
+Prints kernel ring buffer.
 
 ### ❌ Checksums
 
@@ -231,13 +270,19 @@ Mark challenges using a ✅ once they are finished.
 
 *What is the use of this hash?*
 
-### ❌ The printenv command
+### ✅ The printenv command
 
 *Describe in your own words what the `printenv` command does.*
 
-### ❌ IP Address
+Prints all current running enviorments.
+
+### ✅ IP Address
 
 *Find the IP address of your WiFi interface. What command did you use?*
+
+```bash
+ifconfig
+```
 
 ### ❌ IP of Sivir Server
 
