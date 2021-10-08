@@ -373,13 +373,22 @@ Try to solve the challenges without using google. Better to use the man-pages to
 
 Mark challenges using a ✅ once they are finished.
 
-### ❌ System user accounts
+### ✅ System user accounts
 
 *Try to login to the `daemon` system user account. Use `sudo su daemon`. What does it display as a message ? What application is outputting this message ? Run that application and prove it.*
 
-### ❌ Creating group with id
+```
+This account is currently unavailable.
+Daemon: runs applications in the background that have deatached from the terminal.
+```
+
+### ✅ Creating group with id
 
 *Create a group called `hackers` with the specific group id `1337`. Now create two users (students from the class) and add them both the group.*
+
+```bash
+sudo addgroup hackers --gid 1337
+```
 
 ### ❌ Difference false and nologin
 
@@ -395,9 +404,13 @@ Mark challenges using a ✅ once they are finished.
 
 *Now lock the user account and make sure there is no way anyone can login as `steve`, not even `root`*
 
-### ❌ Zsh Shell
+### ✅ Zsh Shell
 
 *Install the zsh shell on your system. Now change your own shell to `zsh`. Make sure to do this in such a way that a new session will also use `zsh`.*
+
+```bash
+chsh -s /bin/zsh
+```
 
 ### ❌ Semester Account
 
