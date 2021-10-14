@@ -287,11 +287,13 @@ Mark challenges using a ✅ once they are finished.
 
 ```
 
-### ❌ Nmap
+### ✅ Nmap
 
 *Install the `nmap` package using `apt`.*
 
 *Port scan the server `sivir.devbit.be`. Make sure you are connected to the `Devbit` network. What services are running on this machine?*
+
+53/tcp closed domain  conn-refused
 
 ### ✅ NodeJS
 

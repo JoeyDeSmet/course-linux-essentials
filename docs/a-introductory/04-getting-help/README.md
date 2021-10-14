@@ -262,13 +262,14 @@ wget https://downloads.raspberrypi.org/raspios_lite_armhf/images/raspios_lite_ar
 
 Prints kernel ring buffer.
 
-### ❌ Checksums
+### ✅ Checksums
 
 *Go to the website of Raspberry Pi - [https://www.raspberrypi.org/software/operating-systems](https://www.raspberrypi.org/software/operating-systems) and download the Raspberry Pi OS image using the `wget` command line tool. Now check if the SHA-256 checksum complies with the one being advertised on the website.*
 
 *What tool did you use to calculate the checksum? Demonstrate its usage.*
-
+shasum
 *What is the use of this hash?*
+verify checksum
 
 ### ✅ The printenv command
 
@@ -284,6 +285,8 @@ Prints all current running enviorments.
 ifconfig
 ```
 
-### ❌ IP of Sivir Server
+### ✅ IP of Sivir Server
 
 *What is the IP address of the internal server `sivir.devbit.be`? Make sure you are connected to the `Devbit` network.*
+
+172.16.10.5

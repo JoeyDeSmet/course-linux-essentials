@@ -390,19 +390,34 @@ Daemon: runs applications in the background that have deatached from the termina
 sudo addgroup hackers --gid 1337
 ```
 
-### ❌ Difference false and nologin
+### ✅ Difference false and nologin
 
 *Some user entries are showing `/bin/false` as the shell command. Do some research and explain what the difference is with `/usr/sbin/nologin`.*
 
-### ❌ The auth.log file 
+With /urs/bin/nologin if a user tries to log in he will receive a message that the account is currently no available and exits. With /bin/false the terminial just exits.
 
-*What does the file `/log/var/auth.log` track? Provide an example of a command that shows entries being added to the log after you executed the command. Include the entry here that was added to the file.*
+### ✅ The auth.log file 
 
-### ❌ Locking out Steve
+*What does the file `/var/log/auth.log` track? Provide an example of a command that shows entries being added to the log after you executed the command. Include the entry here that was added to the file.*
+
+A log of changes that have things to do with authorization.
+```bash
+sudo addgroup name group
+```
+
+### ✅ Locking out Steve
 
 *Create a new user steve and set a password for the user. Login to the `steve` account using `su` to make sure it works.*
 
+```bash
+sudo adduser steve
+```
+
 *Now lock the user account and make sure there is no way anyone can login as `steve`, not even `root`*
+
+```bash
+sudo passwd -l steve
+```
 
 ### ✅ Zsh Shell
 
@@ -412,6 +427,11 @@ sudo addgroup hackers --gid 1337
 chsh -s /bin/zsh
 ```
 
-### ❌ Semester Account
+### ✅ Semester Account
 
 *Create a new account for an exchange student called `maggie`. Make sure the account can only be used until 31st of January of the next year. Basically only for this semester*.
+
+```bash
+sudo adduser maggie
+sudo passwd --expire-date 360 -l maggie 
+```
