@@ -604,11 +604,21 @@ Solve the challenges by creating small bash scripts. Place the bash scripts here
 
 Mark challenges using a ✅ once they are finished.
 
-### ❌ Log the Date
+### ✅ Log the Date
 
 *Create a script that output the date every 10 seconds. Use the `sleep` command to wait between calls to the `date` command.*
 
-### ❌ Available Memory
+```bash
+#!/usr/bin/env bash
+while [ true ]
+do
+  time=$(date)
+  echo $time
+  sleep 10
+done
+```
+
+### ✅ Available Memory
 
 *Output the available system memory together with the current date in the following format:*
 
@@ -618,7 +628,16 @@ Mark challenges using a ✅ once they are finished.
 
 *The available memory can be found in the file `/proc/meminfo`. Use the `grep` tool to filter out the line with MemAvailable.*
 
-### ❌ Fetching Github Keys
+```bash
+#!/usr/bin/env bash
+
+date=$(date)
+memory=$(grep "MemAvailable" /proc/meminfo)
+
+echo "[$date] $memory"
+```
+
+### ✅ Fetching Github Keys
 
 *Create a script that fetches the public SSH keys of a user on GitHub and displays them in the terminal. This can be accomplished by using the curl tool to access the endpoint `https://github.com/<username>.keys`, where `<username>` is an existing github username.*
 
@@ -639,10 +658,71 @@ Fetching Keys
 ...
 ```
 
-### ❌ DHCP Traffic
+```bash
+#!/usr/bin/env bash
+
+username=$1
+
+if [ -z $username ]; then
+  echo "Please enter github username"
+  read username
+fi
+
+sshKeys=$(curl https://github.com/${username}.keys)
+
+echo $sshKeys
+```
+
+### ✅ DHCP Traffic
 
 *Create a script that filters DHCP network traffic and outputs matching MAC-Addresses, IP-Addresses and Hostnames.*
+ ```bash
+ #!/usr/bin/env bash
 
+buffer=()
+
+dhcpdump -i wlo1 | 
+while read -r line 
+do 
+  # fill buffer with usefull data
+  if echo ${line} | grep -q "IP:"; then
+    buffer=$line
+  fi
+
+  # Check messege type
+  if echo ${line} | grep -q "DHCP message type"; then
+    arr=(${line})
+    messageType=${arr[8]}
+
+    ip_mac=($buffer)
+    case "$messageType" in
+      "(DHCPRELEASE)")
+        echo "Client ${} with mac ${ip_mac[2]} requesting to release ${ip_mac[1]}"
+      ;;
+
+      "(DHCPDISCOVER)")
+        echo "Client with mac ${ip_mac[2]} Discovering network"
+      ;;
+
+      "(DHCPREQUEST)")
+        echo "Client requesting to use offered address"
+      ;;
+
+      "(DHCPACK)")
+        echo "Client with mac ${ip_mac[5]} now has ip address ${ip_mac[4]}"
+      ;;
+
+      "(DHCPOFFER)")
+        echo "Dhcp server offering address ${ip_mac[4]} to ${ip_mac[5]}"
+      ;;    
+    esac
+
+    # Clear buffer
+    buffer=()
+
+  fi
+done
+ ```
 ### ❌ Backups
 
 *Choose a directory on your system (best to choose one in your home-dir). Create a script that archives this directory in a `.tar.gz` tarball file. Add a timestamp in the name of the output file.*
