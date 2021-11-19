@@ -258,7 +258,7 @@ Try to solve the challenges without using google. Better to use the man-pages to
 
 Mark challenges using a ✅ once they are finished.
 
-### ❌ Locate
+### ✅ Locate
 
 *Install the `locate` command and update the index database.*
 
@@ -268,15 +268,29 @@ Mark challenges using a ✅ once they are finished.
 * the configuration file `ssh_config`
 * `auth.log`
 
-### ❌ Python man-pages
+```bash
+locate sudoers.dist
+locate ssh_config
+locate auth.log
+```
+
+### ✅ Python man-pages
 
 *Use the `whereis` tool to determine the location of the man-pages of `python`.*
 
-### ❌ Python man-pages
+```bash
+whereis python
+```
+
+### ✅ Python man-pages
 
 *Use the `whereis` tool to determine the location of the `find` binary.*
 
-### ❌ Which
+```bash
+whereis find
+```
+
+### ✅ Which
 
 *What is the location of the following commands for the current user:*
 
@@ -286,30 +300,58 @@ Mark challenges using a ✅ once they are finished.
 
 *Why are the location of `passwd` and `fdisk` different? What is `fdisk` used for?*
 
+fdisk is a command that should only be run by sudo user.
+
+fdisk is a tool to delete and create partitions
+
 ### Use find for the following challenges
 
 Make sure to redirect the `permission denied` errors to `/dev/null` for all searches unless specified otherwise.
 
-#### ❌ kernel.log
+#### ✅ kernel.log
 
 *Find the file `kernel.log`.*
 
-#### ❌ .bashrc
+```bash
+find / -name "kernel.log" 2>/dev/null
+```
+
+#### ✅ .bashrc
 
 *Find the files `.bashrc`.*
 
-#### ❌ System Configuration Files
+```bash
+find /home -name -name ".bashrc" 2>/dev/null
+```
+
+#### ✅ System Configuration Files
 
 *Search for files that end with the extension `.conf` and contain a filename with the keyword `system` in the `/etc` directory.*
 
-#### ❌ User Readable Files
+```bash
+find /etc -name "*system*.conf" 2>/dev/null
+```
+
+#### ✅ User Readable Files
 
 *What option can we use on `find` to make sure the current user can read the file? Don't use the `-perm` option. There is a better option. Give a nice example.*
 
-#### ❌ Altered Log Files
+```bash
+find /home/joey -name "*.conf" -user $(whoami) 2>/dev/null
+```
+
+#### ✅ Altered Log Files
 
 *Find all log files in `/var/log` that were modified in the last 24 hours. Make sure to only include files and not directories. Now extend the command to perform a long listing human readable `ls` for each file.*
 
-#### ❌ Steal All Logs
+```bash
+find /var/log -mtime -1 2>/dev/null -exec ls -alh {} \;
+```
+
+#### ✅ Steal All Logs
 
 *Create a directory `logs` in `/tmp` and copy all `*.log` files you can find on the system to that location.*
+
+```bash
+find / -name "*.log" 2>/dev/null -exec cp /tmp/logs {} \;
+```

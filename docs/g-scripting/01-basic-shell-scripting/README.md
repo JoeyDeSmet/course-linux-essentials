@@ -723,6 +723,17 @@ do
   fi
 done
  ```
-### ❌ Backups
+### ✅ Backups
 
 *Choose a directory on your system (best to choose one in your home-dir). Create a script that archives this directory in a `.tar.gz` tarball file. Add a timestamp in the name of the output file.*
+
+```bash
+#!/usr/bin/env bash
+
+filename=$(date +"Backup-%F")
+
+echo compressing files
+tar -czvf ${filename}.tar.gz /home/joey/Documents/Programming/neopixels-JoeyDeSmet/
+
+echo "done"
+```
