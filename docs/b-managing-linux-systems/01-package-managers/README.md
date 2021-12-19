@@ -373,3 +373,7 @@ console.log("Hello World from JavaScript");
 ### ✅ MQTT
 
 *Find a command line tool that allows you to publish messages to an MQTT broker. Use it to send your name to the topic `linux/students`. Use the broker `mqtt.devbit.be`.*
+
+```bash
+mosquitto_pub -h mqtt.devbit.be -t "linux/students" -m "Joey"
+```
